@@ -69,4 +69,6 @@ http://localhost:5000
 
 For questions about this project, please reach out through our [ISEF Project Page](https://isef.net/project/soft050t-cycling-tourism-platform-for-active-seniors).
 
+Team Leader's email : choisment922@gmail.com
+
 **ISEF ID**: SOFT050T
