@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>시끌시끌 - 로그인</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚲</text></svg>">
-        <link rel="stylesheet" href="../static/basic.css">
-        <link rel="stylesheet" href="../static/Menu/menu_style.css">
-        <link rel="stylesheet" href="../static/Logout&Login/logout&login.css">
-        <script src="/static/Menu/menu_script.js"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='basic.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='Menu/menu_style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='Logout&Login/logout&login.css') }}">
+        <script src="{{ url_for('static', filename='Menu/menu_script.js') }}" defer></script>
         <style>
             @font-face {
                 font-family: 'HancomMalangMalang-Regular';
@@ -69,6 +69,8 @@
                 cursor: pointer;
                 color: #333;
                 margin-top: -15px;
+                border: 0;
+                padding: 0;
             }
 
             .login-container {
@@ -201,32 +203,30 @@
     </head>
     <body>
         <header class="header">
-            <div class="hamburger-menu" id="hamburger-menu">
-                &#9776;
-            </div>
+            <button class="hamburger-menu" id="hamburger-menu" type="button" aria-label="메뉴 열기" aria-controls="sidebar">&#9776;</button>
             <div class="logo_container">
-                <img src="../static/logo.png" alt="logo" class="logo" />
+                <img src="{{ url_for('picture', filename='logo/logo.png') }}" alt="로고" class="logo">
             </div>
         </header>
-        <nav class="sidebar" id="sidebar">
+        <nav class="sidebar" id="sidebar" aria-label="주요 메뉴">
             <ul class="sidebar-nav">
-                <li class="nav-item"><a href="/../../../" class="nav-link">홈</a></li>
+                <li class="nav-item"><a href="{{ url_for('main') }}" class="nav-link">홈</a></li>
             </ul>
         </nav>
-        <div class="login-container">
+        <main class="login-container">
             <div class="login-logo">
-                <img src="https://i.namu.wiki/i/Bge3xnYd4kRe_IKbm2uqxlhQJij2SngwNssjpjaOyOqoRhQlNwLrR2ZiK-JWJ2b99RGcSxDaZ2UCI7fiv4IDDQ.webp" alt="Login Image">
+                <img src="https://i.namu.wiki/i/Bge3xnYd4kRe_IKbm2uqxlhQJij2SngwNssjpjaOyOqoRhQlNwLrR2ZiK-JWJ2b99RGcSxDaZ2UCI7fiv4IDDQ.webp" alt="로그인">
             </div>
             <div class="links">
-                <a href="{{ url_for('login') }}" class="active">Login</a>
-                <a href="{{ url_for('register') }}">Register</a>
+                <a href="{{ url_for('login') }}" class="active" aria-current="page">로그인</a>
+                <a href="{{ url_for('register') }}">회원가입</a>
             </div>
             <form action="{{ url_for('login') }}" method="post" class="login-form">
-                <input type="text" name="username" placeholder="Username" id="username" required>
-                <input type="password" name="password" placeholder="Password" id="password" required>
+                <input type="text" name="username" placeholder="아이디" id="username" autocomplete="username" aria-label="아이디" required>
+                <input type="password" name="password" placeholder="비밀번호" id="password" autocomplete="current-password" aria-label="비밀번호" required>
                 <div class="msg">{{ msg }}</div>
-                <input type="submit" value="Login">
+                <input type="submit" value="로그인">
             </form>
-        </div>
+        </main>
     </body>
 </html>
